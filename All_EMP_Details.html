@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All EMP Details</title>
+    <!-- bootstrap========================================================== -->
+    <!-- Bootstrap CSS (CDN + Local) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons (CDN + Local) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="bootstrap_icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- DataTables CSS (CDN + Local) -->
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="DataTables/datatables.min.css">
+    <!-- Tom Select CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
+
+    <!-- Tom Select JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+
+    <!-- Custom CSS (Local Only) -->
+    <link rel="stylesheet" href="assets/co.css">
+    <!-- bootstrap========================================================== -->
+
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header">
+        <!-- nav==================================== -->
+        <nav class="navbar navbar-expand-sm custom-nav-bg fixed-top p-0">
+            <div class="container-fluid p-0">
+                <a class="navbar-brand custom-nav-bg ps-3" href="index.html">
+                    <img src="./img/Leave Management Logo.png" class="custom-nav-logo-img" alt="Logo">
+                </a>
+                <div class="d-flex align-items-center ms-auto  custom-nav-bg-dark">
+                    <img src="./img/Header.png" class="custom-nav-logo-img" alt="Header Image">
+                    <div class="row">
+                        <div class="col-auto pt-1 pe-2" style="padding:0">
+                            <a href="./include/USER_GUIDE.pdf" target="_blank"
+                                class="link-offset-2 link-underline link-underline-opacity-0 text-center">
+                                <h5 class="text-black mt-2 custom-nav-text">User Guide</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="vl bg-light mx-3" style="width: 1px; height: 60px;"></div>
+                    <div class="row">
+                        <div class="col-auto pt-1">
+                            <h5 class="custom-nav-text text-uppercase" id="current-date"></h5>
+                        </div>
+                    </div>
+                    <div class="vl bg-light mx-3" style="width: 1px; height: 60px;"></div>
+                    <div class="row me-2">
+                        <div class="col-auto pt-1 text-center">
+                            <img src="./img/Admin.svg" alt="Admin Icon" class="custom-nav-icon">
+                            <a href="index.html" onclick="return logout();">
+                                <img src="./img/Logout.svg" alt="Logout Icon" class="custom-nav-icon">
+                            </a>
+                            <h4 class="text-white mx-2 pt-1 custom-nav-text-size text-center text-capitalize">
+                                Janindu </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- nav==================================== -->
+    </div>
+
+    <!-- Content -->
+    <div id="content">
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="pt-2">Division Employee List</h3>
+                </div>
+                <div class="col-auto pt-2">
+                    <a class="link-offset-2 btn btn-secondary btn-sm link-underline link-underline-opacity-0"
+                        href="ManualLeave_dashboard.html">Back to Dashboard</a>
+                </div>
+            </div>
+            <hr>
+            <table id="example" class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="text-center">No</th>
+      <th class="text-center">EPF</th>
+      <th class="text-center">Name</th>
+      <th class="text-center">Designation</th>
+      <th class="text-center">Annual</th>
+      <th class="text-center">Sick</th>
+      <th class="text-center">Casual</th>
+      <th class="text-center">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center">1</td>
+      <td class="text-center">EMP001</td>
+      <td class="text-center">Alice Johnson</td>
+      <td class="text-center">Manager</td>
+      <td class="text-center">10</td>
+      <td class="text-center">5</td>
+      <td class="text-center">3</td>
+      <td class="text-center align-middle">
+        <div class="d-flex justify-content-center gap-2">
+          <a href="EMP_leave_history.html" class="btn btn-success btn-sm">
+            <i class="bi bi-eye-fill"></i>
+          </a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">2</td>
+      <td class="text-center">EMP002</td>
+      <td class="text-center">Bob Smith</td>
+      <td class="text-center">Developer</td>
+      <td class="text-center">12</td>
+      <td class="text-center">7</td>
+      <td class="text-center">2</td>
+      <td class="text-center align-middle">
+        <a href="EMP_leave_history.html" class="btn btn-success btn-sm">
+          <i class="bi bi-eye-fill"></i>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">3</td>
+      <td class="text-center">EMP003</td>
+      <td class="text-center">Carol White</td>
+      <td class="text-center">Designer</td>
+      <td class="text-center">8</td>
+      <td class="text-center">3</td>
+      <td class="text-center">4</td>
+      <td class="text-center align-middle">
+        <a href="EMP_leave_history.html" class="btn btn-success btn-sm">
+          <i class="bi bi-eye-fill"></i>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">4</td>
+      <td class="text-center">EMP004</td>
+      <td class="text-center">David Lee</td>
+      <td class="text-center">Tester</td>
+      <td class="text-center">11</td>
+      <td class="text-center">2</td>
+      <td class="text-center">6</td>
+      <td class="text-center align-middle">
+        <a href="EMP_leave_history.html" class="btn btn-success btn-sm">
+          <i class="bi bi-eye-fill"></i>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">5</td>
+      <td class="text-center">EMP005</td>
+      <td class="text-center">Eva Green</td>
+      <td class="text-center">HR</td>
+      <td class="text-center">13</td>
+      <td class="text-center">4</td>
+      <td class="text-center">1</td>
+      <td class="text-center align-middle">
+        <a href="EMP_leave_history.html" class="btn btn-success btn-sm">
+          <i class="bi bi-eye-fill"></i>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">6</td>
+      <td class="text-center">EMP006</td>
+      <td class="text-center">Frank Miller</td>
+      <td class="text-center">Support</td>
+      <td class="text-center">9</td>
+      <td class="text-center">6</td>
+      <td class="text-center">5</td>
+      <td class="text-center align-middle">
+        <a href="EMP_leave_history.html" class="btn btn-success btn-sm">
+          <i class="bi bi-eye-fill"></i>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">7</td>
+      <td class="text-center">EMP007</td>
+      <td class="text-center">Grace Hall</td>
+      <td class="text-center">Analyst</td>
+      <td class="text-center">14</td>
+      <td class="text-center">3</td>
+      <td class="text-center">7</td>
+      <td class="text-center align-middle">
+        <a href="EMP_leave_history.html" class="btn btn-success btn-sm">
+          <i class="bi bi-eye-fill"></i>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">8</td>
+      <td class="text-center">EMP008</td>
+      <td class="text-center">Henry King</td>
+      <td class="text-center">Consultant</td>
+      <td class="text-center">7</td>
+      <td class="text-center">1</td>
+      <td class="text-center">8</td>
+      <td class="text-center align-middle">
+        <a href="EMP_leave_history.html" class="btn btn-success btn-sm">
+          <i class="bi bi-eye-fill"></i>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">9</td>
+      <td class="text-center">EMP009</td>
+      <td class="text-center">Irene Scott</td>
+      <td class="text-center">Engineer</td>
+      <td class="text-center">10</td>
+      <td class="text-center">2</td>
+      <td class="text-center">3</td>
+      <td class="text-center align-middle">
+        <a href="EMP_leave_history.html" class="btn btn-success btn-sm">
+          <i class="bi bi-eye-fill"></i>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">10</td>
+      <td class="text-center">EMP010</td>
+      <td class="text-center">Jackie Turner</td>
+      <td class="text-center">Clerk</td>
+      <td class="text-center">6</td>
+      <td class="text-center">5</td>
+      <td class="text-center">4</td>
+      <td class="text-center align-middle">
+        <a href="EMP_leave_history.html" class="btn btn-success btn-sm">
+          <i class="bi bi-eye-fill"></i>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">11</td>
+      <td class="text-center">EMP011</td>
+      <td class="text-center">Karen Young</td>
+      <td class="text-center">Officer</td>
+      <td class="text-center">11</td>
+      <td class="text-center">2</td>
+      <td class="text-center">6</td>
+      <td class="text-center align-middle">
+        <a href="EMP_leave_history.html" class="btn btn-success btn-sm">
+          <i class="bi bi-eye-fill"></i>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">12</td>
+      <td class="text-center">EMP012</td>
+      <td class="text-center">Larry Baker</td>
+      <td class="text-center">Assistant</td>
+      <td class="text-center">8</td>
+      <td class="text-center">4</td>
+      <td class="text-center">7</td>
+      <td class="text-center align-middle">
+        <a href="EMP_leave_history.html" class="btn btn-success btn-sm">
+          <i class="bi bi-eye-fill"></i>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">13</td>
+      <td class="text-center">EMP013</td>
+      <td class="text-center">Mary Wilson</td>
+      <td class="text-center">Supervisor</td>
+      <td class="text-center">13</td>
+      <td class="text-center">3</td>
+      <td class="text-center">2</td>
+      <td class="text-center align-middle">
+        <a href="EMP_leave_history.html" class="btn btn-success btn-sm">
+          <i class="bi bi-eye-fill"></i>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">14</td>
+      <td class="text-center">EMP014</td>
+      <td class="text-center">Nathan Cox</td>
+      <td class="text-center">Coordinator</td>
+      <td class="text-center">9</td>
+      <td class="text-center">6</td>
+      <td class="text-center">1</td>
+      <td class="text-center align-middle">
+        <a href="EMP_leave_history.html" class="btn btn-success btn-sm">
+          <i class="bi bi-eye-fill"></i>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="text-center">15</td>
+      <td class="text-center">EMP015</td>
+      <td class="text-center">Olivia Price</td>
+      <td class="text-center">Consultant</td>
+      <td class="text-center">7</td>
+      <td class="text-center">1</td>
+      <td class="text-center">3</td>
+      <td class="text-center align-middle">
+        <a href="EMP_leave_history.html" class="btn btn-success btn-sm">
+          <i class="bi bi-eye-fill"></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+            <br>
+            <br>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Footer -->
+
+
+    <!--js =========================================================== -->
+    <!-- jQuery (CDN + Local fallback) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-3fabf02c8a6e0e9cb7a4ff69bd92d5bdba9b6efb86d8ff3509d1a96e0e9b7b29"
+        crossorigin="anonymous"></script>
+    <script src="bootstrap/jquery-3.7.1.min.js"></script>
+
+    <!-- Bootstrap Bundle JS (CDN + Local fallback) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1HIaZDU6AItkWMZRm9OO9vYl0A1U+FxOtCAfQ6AUyEz"
+        crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DataTables JS (CDN + Local fallback) -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="DataTables/datatables.min.js"></script>
+
+    <script src="assets/co.js"></script>
+
+    <!--js =========================================================== -->
+    <!-- Initialize DataTables -->
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+
+</body>
+
+</html>

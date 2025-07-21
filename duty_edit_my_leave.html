@@ -1,0 +1,284 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Leave Request</title>
+    <!-- bootstrap========================================================== -->
+    <!-- Bootstrap CSS (CDN + Local) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons (CDN + Local) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="bootstrap_icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- DataTables CSS (CDN + Local) -->
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="DataTables/datatables.min.css">
+    <!-- Tom Select CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
+
+    <!-- Tom Select JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+
+    <!-- Custom CSS (Local Only) -->
+    <link rel="stylesheet" href="assets/co.css">
+
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header">
+        <!-- nav==================================== -->
+        <nav class="navbar navbar-expand-sm custom-nav-bg fixed-top p-0">
+            <div class="container-fluid p-0">
+                <a class="navbar-brand custom-nav-bg ps-3" href="index.html">
+                    <img src="./img/Leave Management Logo.png" class="custom-nav-logo-img" alt="Logo">
+                </a>
+                <div class="d-flex align-items-center ms-auto  custom-nav-bg-dark">
+                    <img src="./img/Header.png" class="custom-nav-logo-img" alt="Header Image">
+                    <div class="row">
+                        <div class="col-auto pt-1 pe-2" style="padding:0">
+                            <a href="./include/USER_GUIDE.pdf" target="_blank"
+                                class="link-offset-2 link-underline link-underline-opacity-0 text-center">
+                                <h5 class="text-black mt-2 custom-nav-text">User Guide</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="vl bg-light mx-3" style="width: 1px; height: 60px;"></div>
+                    <div class="row">
+                        <div class="col-auto pt-1">
+                            <h5 class="custom-nav-text text-uppercase" id="current-date"></h5>
+                        </div>
+                    </div>
+                    <div class="vl bg-light mx-3" style="width: 1px; height: 60px;"></div>
+                    <div class="row me-2">
+                        <div class="col-auto pt-1 text-center">
+                            <img src="./img/Admin.svg" alt="Admin Icon" class="custom-nav-icon">
+                            <a href="index.html" onclick="return logout();">
+                                <img src="./img/Logout.svg" alt="Logout Icon" class="custom-nav-icon">
+                            </a>
+                            <h4 class="text-white mx-2 pt-1 custom-nav-text-size text-center text-capitalize">
+                                Janindu </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- nav==================================== -->
+    </div>
+
+    <!-- Content -->
+    <div id="content">
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <!-- <h3 class="pt-2">Edit Leave Request</h3> -->
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="pt-2">Edit Leave Request</h3>
+                </div>
+                <div class="col-auto pt-2">
+                    <a class="link-offset-2 btn btn-secondary btn-sm link-underline link-underline-opacity-0"
+                        href="duty_my_leavs.html">Go Back</a>
+                </div>
+            </div>
+            <hr>
+
+
+            <table class="table table-striped-columns">
+                <tr>
+                    <th>Servies No:</th>
+                    <td class="text-center">AASL12345</td>
+                    <th>Name:</th>
+                    <td class="text-center">Janindu Gaurinda</td>
+                </tr>
+                <tr>
+                    <th>Designation:</th>
+                    <td class="text-center">Software Engineer</td>
+                    <th>Division:</th>
+                    <td class="text-center">IT Division</td>
+                </tr>
+            </table>
+
+
+            <!-- ----------------------------------------------------------------- -->
+
+            <form id="duties_leave_form">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <label for="Leave_type" class="form-label col-auto">Leave Type</label>
+                                <span class="error col-auto text-right text-danger" id="Leave_typeError"></span>
+                            </div>
+                            <select class="form-select border border-black" required>
+                                <option selected>Full Day !!Selected</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <label for="supervisor_id" class="form-label col-auto">Supervisor</label>
+                                <span class="error col-auto text-right text-danger" id="supervisor_idError"></span>
+                            </div>
+                            <select class="form-select border border-black" required>
+                                <option selected>John Doe !!Selected</option>
+                                <option>Jane Smith</option>
+                                <option>Michael Fernando</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="arrival_input_div">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="mb-3">
+                                    <div class="row d-flex justify-content-between align-items-center">
+                                        <label for="Arrival_date" class="form-label col-auto">Arrival Date</label>
+                                        <span class="error col-auto text-danger" id="Arrival_dateError_1"></span>
+                                    </div>
+                                    <input type="date" class="form-control border border-black" value="2025-07-21"
+                                        readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="mb-3">
+                                    <div class="row d-flex justify-content-between align-items-center">
+                                        <label for="Arrival_time" class="form-label col-auto">Arrival Time</label>
+                                        <span class="error col-auto text-danger" id="Arrival_dateError_2"></span>
+                                    </div>
+                                    <input type="time" class="form-control border border-black" value="09:00" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="departure_input_div">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="mb-3">
+                                    <div class="row d-flex justify-content-between align-items-center">
+                                        <label for="Departure_date" class="form-label col-auto">Departure Date</label>
+                                        <span class="error col-auto text-danger" id="Departure_dateError"></span>
+                                    </div>
+                                    <input type="date" class="form-control border border-black" value="2025-07-22"
+                                        readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <div class="mb-3">
+                                    <div class="row d-flex justify-content-between align-items-center">
+                                        <label for="Departure_time" class="form-label col-auto">Departure Time</label>
+                                        <span class="error col-auto text-danger" id="Departure_dateError"></span>
+                                    </div>
+                                    <input type="time" class="form-control border border-black" value="17:00" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12">
+                        <div class="mb-3">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <label for="Nature_for_Duties" class="form-label col-auto">Nature for Duties</label>
+                                <span class="error col-auto text-right text-danger" id="Nature_for_DutiesError"></span>
+                            </div>
+                            <textarea class="form-control border border-black"
+                                readonly>System maintenance and on-site support for network issues</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="button" class="btn btn-secondary mb-2" disabled>SUBMITTED</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+
+    <!-- Include jQuery and then Bootstrap Bundle JS (includes Popper.js) -->
+    <!--js =========================================================== -->
+    <!-- jQuery (CDN + Local fallback) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-3fabf02c8a6e0e9cb7a4ff69bd92d5bdba9b6efb86d8ff3509d1a96e0e9b7b29"
+        crossorigin="anonymous"></script>
+    <script src="bootstrap/jquery-3.7.1.min.js"></script>
+
+    <!-- Bootstrap Bundle JS (CDN + Local fallback) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1HIaZDU6AItkWMZRm9OO9vYl0A1U+FxOtCAfQ6AUyEz"
+        crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DataTables JS (CDN + Local fallback) -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="DataTables/datatables.min.js"></script>
+
+    <script src="assets/co.js"></script>
+
+    <!--js =========================================================== --> <!-- Initialize DataTables -->
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+    <script>
+        function handleLeaveTypeChange() {
+            var leave_type = document.getElementById("leave_type").value;
+            var arrival_input_div = document.getElementById("arrival_input_div");
+            var departure_input_div = document.getElementById("departure_input_div");
+
+            var Arrival_date = document.getElementById("Arrival_date");
+            var Arrival_time = document.getElementById("Arrival_time");
+            var Departure_date = document.getElementById("Departure_date");
+            var Departure_time = document.getElementById("Departure_time");
+
+            if (leave_type === "Arrival Only") {
+                arrival_input_div.style.display = "block";
+                departure_input_div.style.display = "none";
+                Arrival_date.required = true;
+                Arrival_time.required = true;
+                Departure_date.required = false;
+                Departure_time.required = false;
+            } else if (leave_type === "Departure Only") {
+                arrival_input_div.style.display = "none";
+                departure_input_div.style.display = "block";
+                Arrival_date.required = false;
+                Arrival_time.required = false;
+                Departure_date.required = true;
+                Departure_time.required = true;
+            } else if (leave_type === "Full Day") {
+                arrival_input_div.style.display = "block";
+                departure_input_div.style.display = "block";
+                Arrival_date.required = true;
+                Arrival_time.required = true;
+                Departure_date.required = true;
+                Departure_time.required = true;
+            } else {
+                arrival_input_div.style.display = "none";
+                departure_input_div.style.display = "none";
+                Arrival_date.required = false;
+                Arrival_time.required = false;
+                Departure_date.required = false;
+                Departure_time.required = false;
+            }
+        }
+
+        // Trigger the function on page load
+        document.addEventListener("DOMContentLoaded", function () {
+            handleLeaveTypeChange();
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approve / Reject</title>
+    <!-- bootstrap========================================================== -->
+    <!-- Bootstrap CSS (CDN + Local) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons (CDN + Local) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="bootstrap_icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- DataTables CSS (CDN + Local) -->
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="DataTables/datatables.min.css">
+
+    <!-- Custom CSS (Local Only) -->
+    <link rel="stylesheet" href="assets/co.css">
+    <!-- bootstrap========================================================== -->
+    <!-- Tom Select CSS -->
+    <link rel="stylesheet" href="assets/tom_select.css">
+    <!-- Tom Select JS -->
+    <script src="assets/tom_select.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header">
+        <!-- nav==================================== -->
+        <nav class="navbar navbar-expand-sm custom-nav-bg fixed-top p-0">
+            <div class="container-fluid p-0">
+                <a class="navbar-brand custom-nav-bg ps-3" href="index.html">
+                    <img src="./img/Leave Management Logo.png" class="custom-nav-logo-img" alt="Logo">
+                </a>
+                <div class="d-flex align-items-center ms-auto  custom-nav-bg-dark">
+                    <img src="./img/Header.png" class="custom-nav-logo-img" alt="Header Image">
+                    <div class="row">
+                        <div class="col-auto pt-1 pe-2" style="padding:0">
+                            <a href="./include/USER_GUIDE.pdf" target="_blank"
+                                class="link-offset-2 link-underline link-underline-opacity-0 text-center">
+                                <h5 class="text-black mt-2 custom-nav-text">User Guide</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="vl bg-light mx-3" style="width: 1px; height: 60px;"></div>
+                    <div class="row">
+                        <div class="col-auto pt-1">
+                            <h5 class="custom-nav-text text-uppercase" id="current-date"></h5>
+                        </div>
+                    </div>
+                    <div class="vl bg-light mx-3" style="width: 1px; height: 60px;"></div>
+                    <div class="row me-2">
+                        <div class="col-auto pt-1 text-center">
+                            <img src="./img/Admin.svg" alt="Admin Icon" class="custom-nav-icon">
+                            <a href="index.html" onclick="return logout();">
+                                <img src="./img/Logout.svg" alt="Logout Icon" class="custom-nav-icon">
+                            </a>
+                            <h4 class="text-white mx-2 pt-1 custom-nav-text-size text-center text-capitalize">
+                                Janindu </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- nav==================================== -->
+    </div>
+
+    <!-- Content -->
+    <div id="content">
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <form id="filterForm" class="row g-2 align-items-center col-md-6 pt-4">
+                <div class="input-group">
+                    <span class="input-group-text">Date From</span>
+                    <input type="date" name="date_from" class="form-control" aria-label="Date From">
+
+                    <span class="input-group-text">Date To</span>
+                    <input type="date" name="date_to" class="form-control" aria-label="Date To">
+
+                    <button class="btn btn-primary" type="submit">Filter</button>
+                </div>
+
+            </form>
+
+            <p id="filterResult"></p>
+
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="pt-2">Pending List</h3>
+                </div>
+                <div class="col-auto pt-2">
+                    <a class="link-offset-2 btn btn-secondary btn-sm link-underline link-underline-opacity-0"
+                        href="index.html">Back to Dashboard</a>
+                </div>
+            </div>
+            <!-- ======================================approve and reject start==================================================== -->
+            <hr>
+            <table id="example" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">No</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Designation</th>
+                        <th class="text-center">Leave Type</th>
+                        <th class="text-center">Date</th>
+                        <th class="text-center">Num of days</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loop 10 times -->
+                    <!-- You can copy/paste below <tr> block 10 times or use JS to generate dynamically -->
+                    <!-- Example row -->
+                    <tr>
+                        <td class="text-center">1</td>
+                        <td class="text-center">John Doe</td>
+                        <td class="text-center">Software Engineer</td>
+                        <td class="text-center">Annual</td>
+                        <td class="text-center">2025-07-01</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#view_detailes" aria-controls="view_detailes" title="View Details">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#approve_reject_model" title="Edit">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Repeat with different dummy data -->
+                    <tr>
+                        <td class="text-center">2</td>
+                        <td class="text-center">Jane Smith</td>
+                        <td class="text-center">HR Manager</td>
+                        <td class="text-center">Sick</td>
+                        <td class="text-center">2025-07-02</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center"><button class="btn btn-primary btn-sm" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#view_detailes"
+                                aria-controls="view_detailes"><i class="bi bi-eye-fill"></i></button> <button
+                                type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#approve_reject_model"><i class="bi bi-pencil-square"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">3</td>
+                        <td class="text-center">Michael Brown</td>
+                        <td class="text-center">Team Lead</td>
+                        <td class="text-center">Annual</td>
+                        <td class="text-center">2025-07-03</td>
+                        <td class="text-center">3</td>
+                        <td class="text-center"><button class="btn btn-primary btn-sm" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#view_detailes"
+                                aria-controls="view_detailes"><i class="bi bi-eye-fill"></i></button> <button
+                                type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#approve_reject_model"><i class="bi bi-pencil-square"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">4</td>
+                        <td class="text-center">Emily Davis</td>
+                        <td class="text-center">Accountant</td>
+                        <td class="text-center">Casual</td>
+                        <td class="text-center">2025-07-04</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center"><button class="btn btn-primary btn-sm" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#view_detailes"
+                                aria-controls="view_detailes"><i class="bi bi-eye-fill"></i></button> <button
+                                type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#approve_reject_model"><i class="bi bi-pencil-square"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">5</td>
+                        <td class="text-center">Robert Wilson</td>
+                        <td class="text-center">Clerk</td>
+                        <td class="text-center">Sick</td>
+                        <td class="text-center">2025-07-05</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center"><button class="btn btn-primary btn-sm" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#view_detailes"
+                                aria-controls="view_detailes"><i class="bi bi-eye-fill"></i></button> <button
+                                type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#approve_reject_model"><i class="bi bi-pencil-square"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">6</td>
+                        <td class="text-center">Linda Johnson</td>
+                        <td class="text-center">Receptionist</td>
+                        <td class="text-center">Annual</td>
+                        <td class="text-center">2025-07-06</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center"><button class="btn btn-primary btn-sm" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#view_detailes"
+                                aria-controls="view_detailes"><i class="bi bi-eye-fill"></i></button> <button
+                                type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#approve_reject_model"><i class="bi bi-pencil-square"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">7</td>
+                        <td class="text-center">David Lee</td>
+                        <td class="text-center">Intern</td>
+                        <td class="text-center">Casual</td>
+                        <td class="text-center">2025-07-07</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center"><button class="btn btn-primary btn-sm" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#view_detailes"
+                                aria-controls="view_detailes"><i class="bi bi-eye-fill"></i></button> <button
+                                type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#approve_reject_model"><i class="bi bi-pencil-square"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">8</td>
+                        <td class="text-center">Sophia White</td>
+                        <td class="text-center">Project Manager</td>
+                        <td class="text-center">Annual</td>
+                        <td class="text-center">2025-07-08</td>
+                        <td class="text-center">3</td>
+                        <td class="text-center"><button class="btn btn-primary btn-sm" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#view_detailes"
+                                aria-controls="view_detailes"><i class="bi bi-eye-fill"></i></button> <button
+                                type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#approve_reject_model"><i class="bi bi-pencil-square"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">9</td>
+                        <td class="text-center">Chris Green</td>
+                        <td class="text-center">Supervisor</td>
+                        <td class="text-center">Sick</td>
+                        <td class="text-center">2025-07-09</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center"><button class="btn btn-primary btn-sm" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#view_detailes"
+                                aria-controls="view_detailes"><i class="bi bi-eye-fill"></i></button> <button
+                                type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#approve_reject_model"><i class="bi bi-pencil-square"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">10</td>
+                        <td class="text-center">Angela Taylor</td>
+                        <td class="text-center">Support Staff</td>
+                        <td class="text-center">Casual</td>
+                        <td class="text-center">2025-07-10</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center"><button class="btn btn-primary btn-sm" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#view_detailes"
+                                aria-controls="view_detailes"><i class="bi bi-eye-fill"></i></button> <button
+                                type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#approve_reject_model"><i class="bi bi-pencil-square"></i></button></td>
+                    </tr>
+
+
+                    <!-- ############################################# approve and reject Modal  start ########################################## -->
+                    <!-- Modal -->
+                    <div class="modal fade" id="approve_reject_model" tabindex="-1"
+                        aria-labelledby="approve_reject_modelLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="approve_reject_modelLabel">Approve / Reject</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Form for Approval/Rejection -->
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="approve_reject_input" class="form-label">Approve/Denied</label>
+                                            <select class="form-select border border-black" id="approve_reject_input"
+                                                required onchange="Showdsuperviser(this.value)">
+                                                <option selected disabled value="">Choose...</option>
+                                                <option value="Supervisor Approved">Approved</option>
+                                                <option value="Supervisor Denied">Denied</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Supervisor Dropdown -->
+                                        <div class="mb-3" style="display: none;" id="supervisor_div">
+                                            <label for="supervisor_id" class="form-label">Next Reviewer</label>
+                                            <select class="form-select border border-black" id="supervisor_id">
+                                                <option value="" disabled selected>Search or select...</option>
+                                                <option value="1001">Mr. Ashen Perera</option>
+                                                <option value="1002">Ms. Nadeesha Fernando</option>
+                                                <option value="1003">Mr. Sanjeewa Silva</option>
+                                                <option value="1004">Mrs. Harshani Dissanayake</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Reason for Reject -->
+                                        <div class="mb-3" style="display: none;" id="reason_for_reject_div">
+                                            <label for="reason_for_reject" class="form-label">Reason for
+                                                Rejection</label>
+                                            <input type="text" class="form-control border border-black"
+                                                id="reason_for_reject" name="reason_for_reject">
+                                        </div>
+
+                                        <!-- Submit -->
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-success">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ############################################# approve and reject Modal end ########################################## -->
+
+                    <!-- ############################################# approve and reject Offcanvas start ########################################## -->
+                    <!-- Offcanvas -->
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="view_detailes"
+                        aria-labelledby="view_detailesLabel1">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="view_detailesLabel1">Approve / Reject</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <p><b>Leave Id:</b> LV1234</p>
+                            <p><b>Name:</b> Nadeesha Fernando</p>
+                            <p><b>Leave type:</b> Annual</p>
+                            <p><b>Num of days:</b> 5</p>
+                            <p><b>Date of Commencing Leave:</b> 2025-07-25</p>
+                            <p><b>Date of Resuming Duties:</b> 2025-07-30</p>
+                            <p><b>Reason for Leave:</b> Family function out of town</p>
+                            <p><b>Address During Leave:</b> 123 Beach Road, Galle</p>
+                            <p><b>Request Date:</b> 2025-07-10</p>
+
+                            <hr>
+
+                            <p><b>Approval Status:</b> Supervisor Denied</p>
+                            <p><b>Supervisor:</b> Mr. Ashen Perera</p>
+                            <p><b>Supervisor Comment:</b> Reason not sufficient for approval</p>
+
+                            <hr>
+
+                            <p><b>Respond Date:</b> 2025-07-20</p>
+                            <p><b>Leave Request Submitted by:</b> janindu.gaurinda</p>
+                        </div>
+                    </div>
+                </tbody>
+            </table>
+        </div>
+        <!-- ############################################# approve and reject Offcanvas end ########################################## -->
+
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <!-- ======================================reject start==================================================== -->
+            <h3>Reject List</h3>
+            <hr>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">No</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Designation</th>
+                        <th class="text-center">Leave Type</th>
+                        <th class="text-center">Date</th>
+                        <th class="text-center">Num of days</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Row 1 -->
+                    <tr>
+                        <td class="text-center">1</td>
+                        <td class="text-center">John Doe</td>
+                        <td class="text-center">Software Engineer</td>
+                        <td class="text-center">Annual</td>
+                        <td class="text-center">2025-07-15</td>
+                        <td class="text-center">5</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvas1">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                            <button class="btn btn-success btn-sm" type="button" data-bs-toggle="modal"
+                                data-bs-target="#modal1">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <!-- Row 2 -->
+                    <tr>
+                        <td class="text-center">2</td>
+                        <td class="text-center">Jane Smith</td>
+                        <td class="text-center">HR Manager</td>
+                        <td class="text-center">Casual</td>
+                        <td class="text-center">2025-07-10</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvas2">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                            <button class="btn btn-success btn-sm" type="button" data-bs-toggle="modal"
+                                data-bs-target="#modal2">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- MODAL 1 -->
+            <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Approve / Reject</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="status1" class="form-label">Approve/Denied</label>
+                                    <select class="form-select" id="status1" required>
+                                        <option value="" disabled selected>Choose...</option>
+                                        <option value="Pending">Pending</option>
+                                    </select>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OFFCANVAS 1 -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas1">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">Reject Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <p><b>Leave Id:</b> 001</p>
+                    <p><b>Name:</b> John Doe</p>
+                    <p><b>Leave Type:</b> Annual</p>
+                    <p><b>Num of Days:</b> 5</p>
+                    <p><b>Date of Commencing Leave:</b> 2025-07-15</p>
+                    <p><b>Date of Resuming Duties:</b> 2025-07-20</p>
+                    <p><b>Reason for Leave:</b> Personal</p>
+                    <p><b>Address During Leave:</b> Colombo</p>
+                    <p><b>Request Date:</b> 2025-07-10</p>
+                    <p><b>Approval Status:</b> Pending</p>
+                    <p><b>Supervisor:</b> Mr. Silva</p>
+                    <p><b>Respond Date:</b> - </p>
+                    <p><b>Submitted By:</b> HR Desk</p>
+                </div>
+            </div>
+
+            <!-- MODAL 2 -->
+            <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Approve / Reject</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="status2" class="form-label">Approve/Denied</label>
+                                    <select class="form-select" id="status2" required>
+                                        <option value="" disabled selected>Choose...</option>
+                                        <option value="Pending">Pending</option>
+                                    </select>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OFFCANVAS 2 -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvas2">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">Reject Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <p><b>Leave Id:</b> 002</p>
+                    <p><b>Name:</b> Jane Smith</p>
+                    <p><b>Leave Type:</b> Casual</p>
+                    <p><b>Num of Days:</b> 2</p>
+                    <p><b>Date of Commencing Leave:</b> 2025-07-10</p>
+                    <p><b>Date of Resuming Duties:</b> 2025-07-12</p>
+                    <p><b>Reason for Leave:</b> Family Event</p>
+                    <p><b>Address During Leave:</b> Galle</p>
+                    <p><b>Request Date:</b> 2025-07-09</p>
+                    <p><b>Approval Status:</b> Approved</p>
+                    <p><b>Approved By:</b> Ms. Kumari</p>
+                    <p><b>Respond Date:</b> 2025-07-10</p>
+                    <p><b>Submitted By:</b> Admin</p>
+                </div>
+            </div>
+
+            <!-- ======================================reject end==================================================== -->
+            <br>
+            <br>
+        </div>
+    </div>
+
+    <!--js =========================================================== -->
+    <!-- jQuery (CDN + Local fallback) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-3fabf02c8a6e0e9cb7a4ff69bd92d5bdba9b6efb86d8ff3509d1a96e0e9b7b29"
+        crossorigin="anonymous"></script>
+    <script src="bootstrap/jquery-3.7.1.min.js"></script>
+
+    <!-- Bootstrap Bundle JS (CDN + Local fallback) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1HIaZDU6AItkWMZRm9OO9vYl0A1U+FxOtCAfQ6AUyEz"
+        crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DataTables JS (CDN + Local fallback) -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="DataTables/datatables.min.js"></script>
+
+    <script src="assets/co.js"></script>
+
+    <!--js =========================================================== -->
+    <script src="./assets/validtion.js"></script>
+    <!-- Initialize DataTables -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.supervisor-select').forEach(function (select) {
+                new TomSelect(select, {
+                    placeholder: "Search or select...",
+                    allowEmptyOption: true,
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+        $(document).ready(function () {
+            $('#example1').DataTable();
+        });
+        $(document).ready(function () {
+            $('#example2').DataTable();
+        });
+    </script>
+
+    <script>
+        document.getElementById('approve_reject_input').addEventListener('change', function () {
+            const approveStatus = this.value;
+
+            document.querySelectorAll('.supervisor-select').forEach(function (supervisorField) {
+                if (approveStatus === "Supervisor Approved") {
+                    supervisorField.required = true;
+                } else {
+                    supervisorField.required = false;
+                    supervisorField.tomselect.clear(); // Clear selection with Tom Select
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+                new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+    <!-- Supervisor Dropdown -->
+
+    <script>
+        function Showdsuperviser(approveStatus) {
+            var supervisorDiv = document.getElementById("supervisor_div");
+            var reasonForRejectDiv = document.getElementById("reason_for_reject_div");
+            var supervisorSelect = document.getElementById("supervisor_id");
+            var rejectInput = document.getElementById("reason_for_reject");
+
+            if (approveStatus === "Supervisor Approved") {
+                supervisorDiv.style.display = "block";
+                reasonForRejectDiv.style.display = "none";
+                supervisorSelect.required = true;
+                rejectInput.required = false;
+            } else if (approveStatus === "Supervisor Denied") {
+                supervisorDiv.style.display = "none";
+                reasonForRejectDiv.style.display = "block";
+                supervisorSelect.required = false;
+                rejectInput.required = true;
+            } else {
+                supervisorDiv.style.display = "none";
+                reasonForRejectDiv.style.display = "none";
+                supervisorSelect.required = false;
+                rejectInput.required = false;
+            }
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>

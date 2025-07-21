@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave History</title>
+    <!-- bootstrap========================================================== -->
+    <!-- Bootstrap CSS (CDN + Local) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons (CDN + Local) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="bootstrap_icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- DataTables CSS (CDN + Local) -->
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="DataTables/datatables.min.css">
+    <!-- Tom Select CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
+
+    <!-- Tom Select JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+
+    <!-- Custom CSS (Local Only) -->
+    <link rel="stylesheet" href="assets/co.css">
+    <!-- bootstrap========================================================== -->
+
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header">
+        <!-- nav==================================== -->
+        <nav class="navbar navbar-expand-sm custom-nav-bg fixed-top p-0">
+            <div class="container-fluid p-0">
+                <a class="navbar-brand custom-nav-bg ps-3" href="index.html">
+                    <img src="./img/Leave Management Logo.png" class="custom-nav-logo-img" alt="Logo">
+                </a>
+                <div class="d-flex align-items-center ms-auto  custom-nav-bg-dark">
+                    <img src="./img/Header.png" class="custom-nav-logo-img" alt="Header Image">
+                    <div class="row">
+                        <div class="col-auto pt-1 pe-2" style="padding:0">
+                            <a href="./include/USER_GUIDE.pdf" target="_blank"
+                                class="link-offset-2 link-underline link-underline-opacity-0 text-center">
+                                <h5 class="text-black mt-2 custom-nav-text">User Guide</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="vl bg-light mx-3" style="width: 1px; height: 60px;"></div>
+                    <div class="row">
+                        <div class="col-auto pt-1">
+                            <h5 class="custom-nav-text text-uppercase" id="current-date"></h5>
+                        </div>
+                    </div>
+                    <div class="vl bg-light mx-3" style="width: 1px; height: 60px;"></div>
+                    <div class="row me-2">
+                        <div class="col-auto pt-1 text-center">
+                            <img src="./img/Admin.svg" alt="Admin Icon" class="custom-nav-icon">
+                            <a href="index.html" onclick="return logout();">
+                                <img src="./img/Logout.svg" alt="Logout Icon" class="custom-nav-icon">
+                            </a>
+                            <h4 class="text-white mx-2 pt-1 custom-nav-text-size text-center text-capitalize">
+                                Janindu </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- nav==================================== -->
+    </div>
+
+    <!-- Content -->
+    <div id="content">
+        <div class="container">
+            <br>
+            <br>
+            <br>
+
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="pt-2">Leave List</h3>
+                </div>
+                <div class="col-auto pt-2">
+                  <a href="genarate_leave_pdf.html" target="_blank" class="btn btn-primary btn-sm">Download Leave Report</a>
+
+                </div>
+                <div class="col-auto pt-2">
+                    <form action="" method="post" target="_blank">
+                        <button class="btn btn-primary btn-sm" type="submit">Download Duty Leave Report</button>
+                    </form>
+                </div>
+                <div class="col-auto pt-2">
+                    <a class="link-offset-2 btn btn-secondary btn-sm link-underline link-underline-opacity-0"
+                        href="All_EMP_Details.html">Go Back</a>
+                </div>
+            </div>
+            <hr>
+
+            <table class="table table-striped-columns">
+                <tr>
+                    <th>Servies No:</th>
+                    <td class="text-center">13245</td>
+                    <th>Annual:</th>
+                    <td class="text-center">10/14</td>
+                    <th>Casual:</th>
+                    <td class="text-center">5/7</td>
+                    <th>Sick:</th>
+                    <td class="text-center">2/21</td>
+                    <th>Leave Count:(2025-07-21)</th>
+                    <td class="text-center">5</td>
+                </tr>
+                <tr>
+                    <th>Name:</th>
+                    <td class="text-center" colspan="4">John Doe</td>
+                    <th>Designation:</th>
+                    <td class="text-center" colspan="4">IT Officer</td>
+                </tr>
+            </table>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">No</th>
+                        <th class="text-center">Leave Type</th>
+                        <th class="text-center">Date</th>
+                        <th class="text-center">Num of days</th>
+                        <th class="text-center">Approve status</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Static rows with shared offcanvas trigger -->
+                    <tr>
+                        <td class="text-center">1</td>
+                        <td class="text-center">Annual</td>
+                        <td class="text-center">2025-07-01</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">Approved</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="offcanvas"
+                                data-bs-target="#view_detailes">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">2</td>
+                        <td class="text-center">Sick</td>
+                        <td class="text-center">2025-07-10</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">Pending</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="offcanvas"
+                                data-bs-target="#view_detailes">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">3</td>
+                        <td class="text-center">Casual</td>
+                        <td class="text-center">2025-06-20</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">Denied</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="offcanvas"
+                                data-bs-target="#view_detailes">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">4</td>
+                        <td class="text-center">Annual</td>
+                        <td class="text-center">2025-05-15</td>
+                        <td class="text-center">3</td>
+                        <td class="text-center">Approved</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="offcanvas"
+                                data-bs-target="#view_detailes">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">5</td>
+                        <td class="text-center">Casual</td>
+                        <td class="text-center">2025-04-05</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">Supervisor Denied</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="offcanvas"
+                                data-bs-target="#view_detailes">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Shared Offcanvas (same ID for all rows) -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="view_detailes"
+                aria-labelledby="view_detailesLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="view_detailesLabel">View Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <p><b>Leave Id:</b> 12345</p>
+                    <p><b>Name:</b> John Doe</p>
+                    <p><b>Leave type:</b> Annual</p>
+                    <p><b>Num of days:</b> 2</p>
+                    <p><b>Date of Commencing Leave:</b> 2025-07-01</p>
+                    <p><b>Date of Resuming Duties:</b> 2025-07-03</p>
+                    <p><b>Reason for Leave:</b> Personal matters</p>
+                    <p><b>Address During Leave:</b> No. 123, Main Street, Colombo</p>
+                    <p><b>Request Date:</b> 2025-06-25</p>
+                    <p><b>Approval Status:</b> Approved</p>
+                    <p><b>Approved by:</b> Mr. Supervisor</p>
+                    <p><b>Respond Date:</b> 2025-06-27</p>
+                    <p><b>Leave Request Submitted by:</b> jdoe_admin</p>
+                </div>
+            </div>
+
+            <hr>
+            <!-- ========================================================================================== -->
+            <!-- ========================================================================================== -->
+            <br>
+            <br>
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="pt-2">Duty Leave List</h3>
+                </div>
+            </div>
+            <hr>
+            <table id="example2" class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="text-center">No</th>
+            <th class="text-center">Leave Type</th>
+            <th class="text-center">Date</th>
+            <th class="text-center">Time</th>
+            <th class="text-center">Approve Status</th>
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Sample Data Row Template (Copy for 15) -->
+        <!-- Row 1 -->
+        <tr>
+            <td class="text-center align-middle">1</td>
+            <td class="text-center align-middle">Full Day</td>
+            <td class="text-center align-middle">Arr: 2025-07-01<br>Dep: 2025-07-01</td>
+            <td class="text-center align-middle">Arr: 08:00<br>Dep: 17:00</td>
+            <td class="text-center align-middle">Pending</td>
+            <td class="text-center align-middle">
+                <div class="d-flex justify-content-center gap-2">
+                    <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#view_detailes1" aria-controls="view_detailes1">
+                        <i class="bi bi-eye-fill"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+
+        <!-- Offcanvas for Row 1 -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="view_detailes1" aria-labelledby="view_detailesLabel1">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="view_detailesLabel1">View Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <p><b>Duty Leave ID :</b> DL001</p>
+                <p><b>Name :</b> John Doe</p>
+                <p><b>Leave Type :</b> Full Day</p>
+                <p><b>Nature for Duties :</b> Official Visit</p>
+                <p><b>Request Date :</b> 2025-06-30</p>
+                <p><b>Approval Status :</b> Pending</p>
+                <p><b>Supervisor :</b> Mr. Smith</p>
+                <p><b>Respond Date:</b> - </p>
+                <p><b>Leave Request Submitted by:</b> HR_Admin</p>
+            </div>
+        </div>
+
+        <!-- Repeat with changing values for each row -->
+
+        <!-- Sample Repeat (Row 2–15, shown shortened here for clarity) -->
+        <tr>
+            <td class="text-center align-middle">2</td>
+            <td class="text-center align-middle">Arrival Only</td>
+            <td class="text-center align-middle">Arr: 2025-07-02</td>
+            <td class="text-center align-middle">Arr: 09:00</td>
+            <td class="text-center align-middle">Approved</td>
+            <td class="text-center align-middle">
+                <div class="d-flex justify-content-center gap-2">
+                    <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#view_detailes2" aria-controls="view_detailes2">
+                        <i class="bi bi-eye-fill"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="view_detailes2" aria-labelledby="view_detailesLabel2">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="view_detailesLabel2">View Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <p><b>Duty Leave ID :</b> DL002</p>
+                <p><b>Name :</b> Jane Smith</p>
+                <p><b>Leave Type :</b> Arrival Only</p>
+                <p><b>Nature for Duties :</b> Morning Meeting</p>
+                <p><b>Request Date :</b> 2025-07-01</p>
+                <p><b>Approval Status :</b> Approved</p>
+                <p><b>Approved by :</b> Mr. Taylor</p>
+                <p><b>Respond Date:</b> 2025-07-02</p>
+                <p><b>Leave Request Submitted by:</b> HR_Manager</p>
+            </div>
+        </div>
+
+        <!-- Repeat up to 15 rows by changing values accordingly -->
+        <!-- ... -->
+    </tbody>
+</table>
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <!-- Footer -->
+
+
+    <!-- Include jQuery and then Bootstrap Bundle JS (includes Popper.js) -->
+    <!--js =========================================================== -->
+    <!-- jQuery (CDN + Local fallback) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-3fabf02c8a6e0e9cb7a4ff69bd92d5bdba9b6efb86d8ff3509d1a96e0e9b7b29"
+        crossorigin="anonymous"></script>
+    <script src="bootstrap/jquery-3.7.1.min.js"></script>
+
+    <!-- Bootstrap Bundle JS (CDN + Local fallback) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1HIaZDU6AItkWMZRm9OO9vYl0A1U+FxOtCAfQ6AUyEz"
+        crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DataTables JS (CDN + Local fallback) -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="DataTables/datatables.min.js"></script>
+
+    <script src="assets/co.js"></script>
+
+    <!--js =========================================================== -->
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#example2').DataTable();
+        });
+    </script>
+
+</body>
+
+</html>

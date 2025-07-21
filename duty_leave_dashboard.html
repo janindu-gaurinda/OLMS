@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duty Leave Dashboard</title>
+    <!-- bootstrap========================================================== -->
+    <!-- Bootstrap CSS (CDN + Local) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons (CDN + Local) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="bootstrap_icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- DataTables CSS (CDN + Local) -->
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="DataTables/datatables.min.css">
+    <!-- Tom Select CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
+
+    <!-- Tom Select JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+
+    <!-- Custom CSS (Local Only) -->
+    <link rel="stylesheet" href="assets/co.css">
+    <!-- bootstrap========================================================== -->
+
+</head>
+
+<body>
+    <div id="header">
+        <!-- nav==================================== -->
+        <nav class="navbar navbar-expand-sm custom-nav-bg fixed-top p-0">
+            <div class="container-fluid p-0">
+                <a class="navbar-brand custom-nav-bg ps-3" href="index.html">
+                    <img src="./img/Leave Management Logo.png" class="custom-nav-logo-img" alt="Logo">
+                </a>
+                <div class="d-flex align-items-center ms-auto  custom-nav-bg-dark">
+                    <img src="./img/Header.png" class="custom-nav-logo-img" alt="Header Image">
+                    <div class="row">
+                        <div class="col-auto pt-1 pe-2" style="padding:0">
+                            <a href="./include/USER_GUIDE.pdf" target="_blank"
+                                class="link-offset-2 link-underline link-underline-opacity-0 text-center">
+                                <h5 class="text-black mt-2 custom-nav-text">User Guide</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="vl bg-light mx-3" style="width: 1px; height: 60px;"></div>
+                    <div class="row">
+                        <div class="col-auto pt-1">
+                            <h5 class="custom-nav-text text-uppercase" id="current-date"></h5>
+                        </div>
+                    </div>
+                    <div class="vl bg-light mx-3" style="width: 1px; height: 60px;"></div>
+                    <div class="row me-2">
+                        <div class="col-auto pt-1 text-center">
+                            <img src="./img/Admin.svg" alt="Admin Icon" class="custom-nav-icon">
+                            <a href="index.html" onclick="return logout();">
+                                <img src="./img/Logout.svg" alt="Logout Icon" class="custom-nav-icon">
+                            </a>
+                            <h4 class="text-white mx-2 pt-1 custom-nav-text-size text-center text-capitalize">
+                                Janindu </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- nav==================================== -->
+    </div>
+    <div id="dashcontent">
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="pt-2">Duty Leave Dashboard</h3>
+                </div>
+                <div class="col-auto pt-2">
+                    <a class="link-offset-2 btn btn-secondary btn-sm link-underline link-underline-opacity-0"
+                        href="index.html">Go Main Dashboard</a>
+                </div>
+            </div>
+            <hr>
+            <div class="container  ">
+                <div class="row d-flex align-items-center justify-content-center" style="height: 65vh;">
+
+                    <div class="col-3 d-flex flex-column align-items-center justify-content-center">
+                        <a href="duty_approve_reject_super.html"
+                            class="link-offset-2 link-underline link-underline-opacity-0 text-center position-relative">
+                            <img src="./img/Approve_Reject Duty Leave.png" class="img_dashboard1" alt="">
+
+                            <span
+                                class="position-absolute top-0 start-0 translate-middle-x translate-middle-y badge rounded-pill bg-danger">
+                                5 </span>
+
+                            <h5 class="text-black mt-2">Approve/Reject</h5>
+                        </a>
+                    </div>
+                    
+                    <div class="col-3 d-flex flex-column align-items-center justify-content-center">
+                        <a href="duty_leave_form.html"
+                            class="link-offset-2 link-underline link-underline-opacity-0 text-center">
+                            <img src="./img/Add Duty Leave.png" class="img_dashboard1" alt="">
+                            <h5 class="text-black mt-2">Add Duty Leaves</h5>
+                        </a>
+                    </div>
+                   
+                    <div class="col-3 d-flex flex-column align-items-center justify-content-center">
+                        <a href="duty_my_leavs.html"
+                            class="link-offset-2 link-underline link-underline-opacity-0 text-center">
+                            <img src="./img/My Duty Leave.png" class="img_dashboard1" alt="">
+                            <h5 class="text-black mt-2">My Duty Leaves</h5>
+                        </a>
+                    </div>
+                    <div class="col-3 d-flex flex-column align-items-center justify-content-center">
+                        <a href="duty_history_leave.html"
+                            class="link-offset-2 link-underline link-underline-opacity-0 text-center">
+                            <img src="./img/Duty Leave History.png" class="img_dashboard1" alt="">
+                            <h5 class="text-black mt-2">Duty Leave History</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer">
+        <!-- Footer -->
+        <footer id="custom-footer" class="text-center custom-footer-bg bg-body-tertiary text-muted">
+            <div id="custom-footer-content" class="custom-footer-bg text-center custom-footer-text">
+                <span class="custom-footer-small-text">
+                    Design & Develop by AASL IT
+                </span>
+            </div>
+        </footer>
+        <!-- Footer -->
+    </div>
+
+    <!--js =========================================================== -->
+    <!-- jQuery (CDN + Local fallback) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-3fabf02c8a6e0e9cb7a4ff69bd92d5bdba9b6efb86d8ff3509d1a96e0e9b7b29"
+        crossorigin="anonymous"></script>
+    <script src="bootstrap/jquery-3.7.1.min.js"></script>
+
+    <!-- Bootstrap Bundle JS (CDN + Local fallback) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1HIaZDU6AItkWMZRm9OO9vYl0A1U+FxOtCAfQ6AUyEz"
+        crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DataTables JS (CDN + Local fallback) -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="DataTables/datatables.min.js"></script>
+
+    <script src="assets/co.js"></script>
+
+    <!--js =========================================================== -->
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+</body>
+
+</html>

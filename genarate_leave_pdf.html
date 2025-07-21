@@ -1,0 +1,109 @@
+<table id="example2" class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="text-center">No</th>
+      <th class="text-center">Leave Type</th>
+      <th class="text-center">Date</th>
+      <th class="text-center">Time</th>
+      <th class="text-center">Approve status</th>
+      <th class="text-center">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Static Rows Loop -->
+    <!-- You can replace sample data below with actual static values -->
+    <!-- Row Template -->
+    <!-- Repeat 15 times -->
+    <!-- Row Start -->
+    <!-- Just update IDs for offcanvas: view_detailes1, view_detailes2... -->
+    <!-- Counter starts from 1 to 15 -->
+    <!-- Sample leave types: Arrival Only, Departure Only, Full Day -->
+    <!-- Sample status: Pending, Approved, Denied -->
+    <!-- Sample Names/Comments/Times etc. are hardcoded -->
+    <!-- Each button opens the unique offcanvas -->
+    <!-- BEGIN STATIC ROWS -->
+    <!-- You can generate more by copy-pasting the <tr> and offcanvas -->
+    <!-- Example for 15 rows -->
+    <!-- Loop Start -->
+    <!-- Row 1 -->
+    <tr>
+      <td class="text-center align-middle">1</td>
+      <td class="text-center align-middle">Full Day</td>
+      <td class="text-center align-middle">Arr: 2025-07-01<br>Dep: 2025-07-01</td>
+      <td class="text-center align-middle">Arr: 08:30<br>Dep: 16:30</td>
+      <td class="text-center align-middle">Approved</td>
+      <td class="text-center align-middle">
+        <div class="d-flex justify-content-center gap-2">
+          <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#view_detailes1" aria-controls="view_detailes1">
+            <i class="bi bi-eye-fill"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
+
+    <!-- Offcanvas 1 -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="view_detailes1" aria-labelledby="view_detailesLabel1">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="view_detailesLabel1">View Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <p><b>Duty Leave ID:</b> 1001</p>
+        <p><b>Name:</b> John Doe</p>
+        <p><b>Leave Type:</b> Full Day</p>
+        <p><b>Nature for Duties:</b> Office Meeting</p>
+        <p><b>Request Date:</b> 2025-07-01</p>
+        <p><b>Approval Status:</b> Approved</p>
+        <p><b>Approved by:</b> Manager A</p>
+        <p><b>Supervisor:</b> Supervisor B</p>
+        <p><b>Respond Date:</b> 2025-07-02</p>
+        <p><b>Leave Request Submitted by:</b> Admin</p>
+      </div>
+    </div>
+    <!-- Row 2 -->
+    <tr>
+      <td class="text-center align-middle">2</td>
+      <td class="text-center align-middle">Arrival Only</td>
+      <td class="text-center align-middle">Arr: 2025-07-02</td>
+      <td class="text-center align-middle">Arr: 09:00</td>
+      <td class="text-center align-middle">Pending</td>
+      <td class="text-center align-middle">
+        <div class="d-flex justify-content-center gap-2">
+          <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#view_detailes2" aria-controls="view_detailes2">
+            <i class="bi bi-eye-fill"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="view_detailes2" aria-labelledby="view_detailesLabel2">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="view_detailesLabel2">View Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <p><b>Duty Leave ID:</b> 1002</p>
+        <p><b>Name:</b> Jane Smith</p>
+        <p><b>Leave Type:</b> Arrival Only</p>
+        <p><b>Nature for Duties:</b> Late arrival due to traffic</p>
+        <p><b>Request Date:</b> 2025-07-02</p>
+        <p><b>Approval Status:</b> Pending</p>
+        <p><b>Supervisor:</b> Supervisor X</p>
+        <p><b>Respond Date:</b> -</p>
+        <p><b>Leave Request Submitted by:</b> User123</p>
+      </div>
+    </div>
+
+    <!-- Repeat same structure for rows 3 to 15 -->
+    <!-- Use unique IDs like view_detailes3, view_detailes4... -->
+    <!-- You can fill in fake or real data as needed -->
+    <!-- Add 13 more rows following same pattern -->
+
+    <!-- Row 3 -->
+    <tr><td class="text-center align-middle">3</td><td class="text-center align-middle">Departure Only</td><td class="text-center align-middle">Dep: 2025-07-03</td><td class="text-center align-middle">Dep: 14:00</td><td class="text-center align-middle">Denied</td><td class="text-center align-middle"><div class="d-flex justify-content-center gap-2"><button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#view_detailes3" aria-controls="view_detailes3"><i class="bi bi-eye-fill"></i></button></div></td></tr>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="view_detailes3" aria-labelledby="view_detailesLabel3"><div class="offcanvas-header"><h5 class="offcanvas-title" id="view_detailesLabel3">View Details</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button></div><div class="offcanvas-body"><p><b>Duty Leave ID:</b> 1003</p><p><b>Name:</b> Alice Brown</p><p><b>Leave Type:</b> Departure Only</p><p><b>Nature for Duties:</b> Early departure</p><p><b>Request Date:</b> 2025-07-03</p><p><b>Approval Status:</b> Denied</p><p><b>Denied by:</b> Supervisor Z</p><p><b>Respond Date:</b> 2025-07-04</p><p><b>Leave Request Submitted by:</b> Staff99</p></div></div>
+
+    <!-- Add rows 4 to 15 here using same format -->
+    <!-- Copy/paste and increment numbers & content -->
+
+  </tbody>
+</table>

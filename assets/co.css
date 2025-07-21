@@ -1,0 +1,135 @@
+@font-face {
+  font-family: 'Acumin Variable Concept';
+  /* src: url('./fonts/ITC\ Avant\ Garde\ Gothic\ LT\ Book.ttf'); */
+  src: url('../fonts/ITCAvantGardeGothicLTBook.ttf');
+  /* src: url('./assets/font/AcuminVariableConcept-WideExtraLight.ttf'); */
+}
+
+.nav_heder_img {
+  height: 70px;
+  width: auto;
+}
+.vl {
+  border-left: 1px solid white;
+  height: 50px;
+  align-self: center;
+}
+
+.imgicon {
+  width: 35px !important;
+  /* Adjust width as needed */
+  height: 35px !important;
+  /* Adjust height as needed */
+  margin-left: 5px;
+  /* Adjust margin as needed */
+}
+.img_dashboard1{
+  height: 200px;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Acumin Variable Concept', sans-serif;
+}
+
+/* #header{
+  background-color: #f8f9fa; Example background
+  padding: 10px;
+} */
+
+#footer {
+  background-color: #f8f9fa; /* Example background */
+  text-align: center;
+}
+
+#content {
+  flex: 1; /* Allows content to expand and take available space */
+  /* overflow: hidden; */
+  /* Removes scrolling */
+  padding-top: 20px;
+  /* Optional padding for better readability */
+  background-color: #ffffff; /* Example background */
+}
+/* ============================================================dashboard */
+#dashcontent {
+  flex: 1; /* Allows content to expand and take available space */
+  overflow: hidden;
+  /* Removes scrolling */
+  padding-top: 20px;
+  /* Optional padding for better readability */
+  background-color: #ffffff; /* Example background */
+}
+/* ============================================================dashboard */
+body {
+  display: flex;
+  flex-direction: column;
+  /* min-height: 100vh; */
+  /* Ensures body height covers the full viewport */
+}
+
+.submitbtn{
+  background-color: #635bce !important;
+  color: white !important;
+}
+.submitbtn1{
+  background-color: #3f70ef !important;
+  color: white !important;
+}
+.submitbtn2{
+  background-color: #42a6f5 !important;
+  color: black !important;
+}
+/* ------------nav----------------------------------------- */
+    .custom-nav-bg {
+        background-color: #635bce !important;
+    }
+
+    .custom-nav-bg-dark {
+        background-color: #221F1F;
+    }
+
+    .custom-nav-logo-img {
+        height: 80px;
+    }
+
+    .custom-nav-text {
+        color: #635bce !important;
+        display: block;
+        text-align: center;
+        font-weight: lighter;
+    }
+
+    .custom-nav-line {
+        border-bottom: 5px solid black;
+        margin-top: 5px;
+        width: 100%;
+        padding-top: 77px;
+        position: fixed;
+    }
+
+    .custom-nav-text-size {
+        font-size: 20px;
+    }
+
+    .custom-nav-icon {
+        height: 40px;
+        width: auto;
+    }
+
+/* ------------nav----------------------------------------- */
+/* ------------footer----------------------------------------- */
+    .custom-footer-text {
+        color: #635bce !important;
+    }
+
+    .custom-footer-bg {
+        background-color: #221F1F !important;
+    }
+
+    .custom-footer-small-text {
+        font-size: 12px;
+    }
+
+/* ------------footer----------------------------------------- */

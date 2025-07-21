@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agree or Disagree Annual Leave</title>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <!-- bootstrap========================================================== -->
+    <!-- Bootstrap CSS (CDN + Local) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons (CDN + Local) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="bootstrap_icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- DataTables CSS (CDN + Local) -->
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="DataTables/datatables.min.css">
+    <!-- Tom Select CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
+
+    <!-- Tom Select JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+
+    <!-- Custom CSS (Local Only) -->
+    <link rel="stylesheet" href="assets/co.css">
+    <!-- bootstrap========================================================== -->
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header">
+        <!-- nav==================================== -->
+        <nav class="navbar navbar-expand-sm custom-nav-bg fixed-top p-0">
+            <div class="container-fluid p-0">
+                <a class="navbar-brand custom-nav-bg ps-3" href="index.html">
+                    <img src="./img/Leave Management Logo.png" class="custom-nav-logo-img" alt="Logo">
+                </a>
+                <div class="d-flex align-items-center ms-auto  custom-nav-bg-dark">
+                    <img src="./img/Header.png" class="custom-nav-logo-img" alt="Header Image">
+                    <div class="row">
+                        <div class="col-auto pt-1 pe-2" style="padding:0">
+                            <a href="./include/USER_GUIDE.pdf" target="_blank"
+                                class="link-offset-2 link-underline link-underline-opacity-0 text-center">
+                                <h5 class="text-black mt-2 custom-nav-text">User Guide</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="vl bg-light mx-3" style="width: 1px; height: 60px;"></div>
+                    <div class="row">
+                        <div class="col-auto pt-1">
+                            <h5 class="custom-nav-text text-uppercase" id="current-date"></h5>
+                        </div>
+                    </div>
+                    <div class="vl bg-light mx-3" style="width: 1px; height: 60px;"></div>
+                    <div class="row me-2">
+                        <div class="col-auto pt-1 text-center">
+                            <img src="./img/Admin.svg" alt="Admin Icon" class="custom-nav-icon">
+                            <a href="index.html" onclick="return logout();">
+                                <img src="./img/Logout.svg" alt="Logout Icon" class="custom-nav-icon">
+                            </a>
+                            <h4 class="text-white mx-2 pt-1 custom-nav-text-size text-center text-capitalize">
+                                Janindu </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- nav==================================== -->
+    </div>
+
+    <!-- Content -->
+    <div id="content">
+        <div class="container">
+            <br>
+            <br>
+            <br>
+
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="pt-2">Agree or Disagree Annual Leave</h3>
+                </div>
+                <div class="col-auto pt-2">
+                    <a class="link-offset-2 btn btn-secondary btn-sm link-underline link-underline-opacity-0"
+                        href="my_leaves.html">Go Back</a>
+                </div>
+            </div>
+            <p class="pt-2 text-danger fw-bold"> <samp><i class="bi bi-exclamation-circle-fill"></i></samp> I Agree to
+                act for the applicant</p>
+            <!-- ======================================approve and reject start==================================================== -->
+            <hr>
+            <table id="example" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">No</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Designation</th>
+                        <th class="text-center">Leave Type</th>
+                        <th class="text-center">Date</th>
+                        <th class="text-center">Num of days</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">1</td>
+                        <td class="text-center">John Doe</td>
+                        <td class="text-center">Software Engineer</td>
+                        <td class="text-center">Annual</td>
+                        <td class="text-center">2025-07-15</td>
+                        <td class="text-center">5</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#view_detailes" aria-controls="view_detailes">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#approve_reject_model">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">2</td>
+                        <td class="text-center">Jane Smith</td>
+                        <td class="text-center">Project Manager</td>
+                        <td class="text-center">Sick</td>
+                        <td class="text-center">2025-07-18</td>
+                        <td class="text-center">3</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#view_detailes" aria-controls="view_detailes">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#approve_reject_model">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">3</td>
+                        <td class="text-center">Alex Brown</td>
+                        <td class="text-center">HR Executive</td>
+                        <td class="text-center">Casual</td>
+                        <td class="text-center">2025-07-20</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#view_detailes" aria-controls="view_detailes">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#approve_reject_model">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">4</td>
+                        <td class="text-center">Michael Lee</td>
+                        <td class="text-center">Finance Officer</td>
+                        <td class="text-center">Annual</td>
+                        <td class="text-center">2025-07-10</td>
+                        <td class="text-center">7</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#view_detailes" aria-controls="view_detailes">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#approve_reject_model">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">5</td>
+                        <td class="text-center">Sara Connor</td>
+                        <td class="text-center">Marketing Lead</td>
+                        <td class="text-center">Casual</td>
+                        <td class="text-center">2025-07-22</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#view_detailes" aria-controls="view_detailes">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#approve_reject_model">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <!-- Approve/Reject Modal -->
+            <div class="modal fade" id="approve_reject_model" tabindex="-1" aria-labelledby="approve_reject_modelLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="approve_reject_modelLabel">Approve / Reject</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="approve_status" class="form-label">Approve/Denied</label>
+                                    <select class="form-select border border-black" id="approve_status">
+                                        <option selected disabled value="">Choose...</option>
+                                        <option value="Approved">Approved</option>
+                                        <option value="Denied">Denied</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3" id="supervisor_div123">
+                                    <label class="form-label">Supervisor</label>
+                                    <select class="form-select border border-black" id="supervisor_id123">
+                                        <option value="" disabled selected>Select supervisor...</option>
+                                        <option value="101">Jane Smith</option>
+                                        <option value="102">Alex Brown</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3" id="reason_for_reject_div123">
+                                    <label class="form-label">Reason for Rejection</label>
+                                    <textarea class="form-control" id="reason_for_reject123"></textarea>
+                                </div>
+
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View Details Offcanvas -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="view_detailes"
+                aria-labelledby="view_detailesLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="view_detailesLabel">Approve / Reject</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <p><b>Leave Id:</b> L-12345</p>
+                    <p><b>Name:</b> John Doe</p>
+                    <p><b>Designation:</b> Software Engineer</p>
+                    <p><b>Leave Type:</b> Annual</p>
+                    <p><b>Num Of Days:</b> 5</p>
+                    <p><b>Date of Commencing Leave:</b> 2025-07-15</p>
+                    <p><b>Date of Resuming Duties:</b> 2025-07-20</p>
+                    <p><b>Reason for Leave:</b> Personal reasons</p>
+                    <p><b>Address During Leave:</b> 123, Colombo</p>
+                    <p><b>Approval Status:</b> Pending</p>
+                    <p><b>Agreed to work:</b> Yes</p>
+                    <p><b>Approved by:</b> Supervisor Jane</p>
+                    <p><b>Leave Request Submitted by:</b> John Doe</p>
+                    <p><b>Request Date:</b> 2025-07-10</p>
+                </div>
+            </div>
+
+        </div>
+        <!-- ############################################# approve and reject Offcanvas end ########################################## -->
+
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <!-- ======================================reject start==================================================== -->
+            <h3>Reject Annual Leave List</h3>
+            <hr>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">No</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Designation</th>
+                        <th class="text-center">Leave Type</th>
+                        <th class="text-center">Date</th>
+                        <th class="text-center">Num of days</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">1</td>
+                        <td class="text-center">Janindu Gaurinda</td>
+                        <td class="text-center">Software Engineer</td>
+                        <td class="text-center">Annual</td>
+                        <td class="text-center">2025-07-20</td>
+                        <td class="text-center">5</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#Reject_detailes" aria-controls="Reject_detailes" title="View Details">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#reject_model">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">2</td>
+                        <td class="text-center">Jane Smith</td>
+                        <td class="text-center">Project Manager</td>
+                        <td class="text-center">Sick</td>
+                        <td class="text-center">2025-07-18</td>
+                        <td class="text-center">3</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#Reject_detailes" aria-controls="Reject_detailes" title="View Details">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#reject_model">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">3</td>
+                        <td class="text-center">Alex Brown</td>
+                        <td class="text-center">HR Executive</td>
+                        <td class="text-center">Casual</td>
+                        <td class="text-center">2025-07-19</td>
+                        <td class="text-center">2</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#Reject_detailes" aria-controls="Reject_detailes" title="View Details">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#reject_model">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">4</td>
+                        <td class="text-center">Michael Lee</td>
+                        <td class="text-center">Finance Officer</td>
+                        <td class="text-center">Annual</td>
+                        <td class="text-center">2025-07-17</td>
+                        <td class="text-center">4</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#Reject_detailes" aria-controls="Reject_detailes" title="View Details">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#reject_model">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">5</td>
+                        <td class="text-center">Sara Connor</td>
+                        <td class="text-center">Marketing Lead</td>
+                        <td class="text-center">Sick</td>
+                        <td class="text-center">2025-07-21</td>
+                        <td class="text-center">1</td>
+                        <td class="text-center">
+                            <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#Reject_detailes" aria-controls="Reject_detailes" title="View Details">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#reject_model">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <!-- Modal -->
+            <div class="modal fade" id="reject_model" tabindex="-1" aria-labelledby="reject_modelLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5">Approve / Reject</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label">Approve/Denied</label>
+                                    <select class="form-select border border-black" required>
+                                        <option selected disabled value="">Choose...</option>
+                                        <option value="waiting">Pending</option>
+                                    </select>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Offcanvas -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="Reject_detailes"
+                aria-labelledby="Reject_detailesLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">Reject Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <p><b>Leave Id : </b>12345</p>
+                    <p><b>Name : </b>Janindu Gaurinda</p>
+                    <p><b>Designation : </b>Software Engineer</p>
+                    <p><b>Leave Type : </b>Annual</p>
+                    <p><b>Num Of days : </b>5</p>
+                    <p><b>Date of Commencing Leave : </b>2025-07-20</p>
+                    <p><b>Date of Resuming Duties : </b>2025-07-25</p>
+                    <p><b>Reason for Leave : </b>Medical Treatment</p>
+                    <p><b>Address During Leave : </b>No. 123, Colombo</p>
+                    <p><b>Approval Status : </b>Pending</p>
+                    <p><b>Agreed to work : </b>Yes</p>
+                    <p><b>Approved by : </b>Manager A</p>
+                    <p><b>Leave Request Submitted by: </b>Admin</p>
+                    <p><b>Request Date : </b>2025-07-18</p>
+                </div>
+            </div>
+
+            <!-- ======================================reject end==================================================== -->
+            <br>
+            <br>
+        </div>
+    </div>
+
+    <!-- Include jQuery and then Bootstrap Bundle JS (includes Popper.js) -->
+    <!--js =========================================================== -->
+    <!-- jQuery (CDN + Local fallback) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-3fabf02c8a6e0e9cb7a4ff69bd92d5bdba9b6efb86d8ff3509d1a96e0e9b7b29"
+        crossorigin="anonymous"></script>
+    <script src="bootstrap/jquery-3.7.1.min.js"></script>
+
+    <!-- Bootstrap Bundle JS (CDN + Local fallback) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1HIaZDU6AItkWMZRm9OO9vYl0A1U+FxOtCAfQ6AUyEz"
+        crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DataTables JS (CDN + Local fallback) -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="DataTables/datatables.min.js"></script>
+
+    <script src="assets/co.js"></script>
+
+    <!--js =========================================================== --><!-- Initialize DataTables -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.supervisor-select').forEach(function (select) {
+                new TomSelect(select, {
+                    placeholder: "Search or select...",
+                    allowEmptyOption: true,
+                });
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+        $(document).ready(function () {
+            $('#example1').DataTable();
+        });
+        $(document).ready(function () {
+            $('#example2').DataTable();
+        });
+    </script>
+    <script>
+        document.getElementById('approve_reject_input').addEventListener('change', function () {
+            const approveStatus = this.value;
+
+            document.querySelectorAll('.supervisor-select').forEach(function (supervisorField) {
+                if (approveStatus === "Supervisor Approved") {
+                    supervisorField.required = true;
+                } else {
+                    supervisorField.required = false;
+                    supervisorField.tomselect.clear(); // Clear selection with Tom Select
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+                new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+    <script>
+        function Showdsuperviser(approveStatus, leavId) {
+            var supervisorDiv = document.getElementById("supervisor_div" + leavId);
+            var reasonForRejectDiv = document.getElementById("reason_for_reject_div" + leavId);
+
+            if (approveStatus === "Pending") {
+                supervisorDiv.style.display = "block";
+                reasonForRejectDiv.style.display = "none";
+                document.getElementById("supervisor_id" + leavId).required = true;
+                document.getElementById("reason_for_reject" + leavId) = false;
+            } else if (approveStatus === "Supervisor Denied") {
+                supervisorDiv.style.display = "none";
+                reasonForRejectDiv.style.display = "block";
+                document.getElementById("reason_for_reject" + leavId).required = true;
+                document.getElementById("supervisor_id" + leavId) = false;
+            } else {
+                supervisorDiv.style.display = "none";
+                reasonForRejectDiv.style.display = "none";
+                document.getElementById("supervisor_id" + leavId).required = false;
+                document.getElementById("reason_for_reject" + leavId) = false;
+            }
+        }
+    </script>
+</body>
+
+</html>

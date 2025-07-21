@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Leave</title>
+    <!-- bootstrap========================================================== -->
+    <!-- Bootstrap CSS (CDN + Local) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons (CDN + Local) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="bootstrap_icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- DataTables CSS (CDN + Local) -->
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="DataTables/datatables.min.css">
+    <!-- Tom Select CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet">
+
+    <!-- Tom Select JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+
+    <!-- Custom CSS (Local Only) -->
+    <link rel="stylesheet" href="assets/co.css">
+    <!-- bootstrap========================================================== -->
+
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header">
+        <!-- nav==================================== -->
+        <nav class="navbar navbar-expand-sm custom-nav-bg fixed-top p-0">
+            <div class="container-fluid p-0">
+                <a class="navbar-brand custom-nav-bg ps-3" href="index.html">
+                    <img src="./img/Leave Management Logo.png" class="custom-nav-logo-img" alt="Logo">
+                </a>
+                <div class="d-flex align-items-center ms-auto  custom-nav-bg-dark">
+                    <img src="./img/Header.png" class="custom-nav-logo-img" alt="Header Image">
+                    <div class="row">
+                        <div class="col-auto pt-1 pe-2" style="padding:0">
+                            <a href="./include/USER_GUIDE.pdf" target="_blank"
+                                class="link-offset-2 link-underline link-underline-opacity-0 text-center">
+                                <h5 class="text-black mt-2 custom-nav-text">User Guide</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="vl bg-light mx-3" style="width: 1px; height: 60px;"></div>
+                    <div class="row">
+                        <div class="col-auto pt-1">
+                            <h5 class="custom-nav-text text-uppercase" id="current-date"></h5>
+                        </div>
+                    </div>
+                    <div class="vl bg-light mx-3" style="width: 1px; height: 60px;"></div>
+                    <div class="row me-2">
+                        <div class="col-auto pt-1 text-center">
+                            <img src="./img/Admin.svg" alt="Admin Icon" class="custom-nav-icon">
+                            <a href="index.html" onclick="return logout();">
+                                <img src="./img/Logout.svg" alt="Logout Icon" class="custom-nav-icon">
+                            </a>
+                            <h4 class="text-white mx-2 pt-1 custom-nav-text-size text-center text-capitalize">
+                                Janindu </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- nav==================================== -->
+    </div>
+
+    <!-- Content -->
+    <div id="content">
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <div class="row align-items-center d-flex justify-content-between text-center">
+                <div class="col-auto">
+                    <h3 class="pt-2">Leave Application</h3>
+                </div>
+                <div class="col text-center">
+
+                </div>
+                <div class="col-auto pt-2">
+                    <a class="btn btn-secondary btn-sm" href="index.html">Back to Dashboard</a>
+                </div>
+            </div>
+
+
+            <hr>
+
+            <table class="table table-striped-columns">
+                <tr>
+                    <th>Service No:</th>
+                    <td class="text-center">AASL12345</td>
+                    <th>Name:</th>
+                    <td class="text-center">John Doe</td>
+                    <th>Annual:</th>
+                    <td class="text-right">5/14</td>
+                </tr>
+                <tr>
+                    <th>Designation:</th>
+                    <td class="text-center">IT Technician</td>
+                    <th>Division:</th>
+                    <td class="text-center">Engineering</td>
+                    <th>Casual:</th>
+                    <td class="text-right">2/7</td>
+                </tr>
+                <tr>
+                    <th>Date of first appointment:</th>
+                    <td class="text-center">2018-06-12</td>
+                    <th>Leave taken current year: (2025)</th>
+                    <td class="text-center">9</td>
+                    <th>Sick:</th>
+                    <td class="text-right">3/21</td>
+                </tr>
+            </table>
+
+            <form id="leave_form">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <label for="Leave_type" class="form-label col-auto">Leave Type</label>
+                                <span class="error col-auto text-right text-danger" id="Leave_typeError"></span>
+                            </div>
+                            <!-- <select class="form-select border border-black" aria-label="Default select example" name="leave_type" id="Leave_type" onchange="validateLeaveType()"> -->
+                            <select class="form-select border border-black" aria-label="Default select example"
+                                name="leave_type" id="Leave_type">
+                                <option selected disabled value="">Choose...</option>
+                                <option value="Annual">Annual</option>
+                                <option value="Casual">Casual</option>
+                                <option value="Sick">Sick</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <label for="date_of_commencing_leave" class="form-label col-auto">Date of commencing
+                                    leave</label>
+                                <span class="error col-auto text-right text-danger "
+                                    id="date_of_commencing_leaveError"></span>
+                            </div>
+                            <input type="date" class="form-control border border-black " id="date_of_commencing_leave"
+                                name="date_of_commencing_leave">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <label for="date_of_resuming_duties" class="form-label col-auto">Date of resuming
+                                    duties</label>
+                                <span class="error col-auto text-right text-danger"
+                                    id="date_of_resuming_dutiesError"></span>
+                            </div>
+                            <input type="date" class="form-control border border-black " id="date_of_resuming_duties"
+                                name="date_of_resuming_duties">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <label for="num_of_days" class="form-label col-auto">Num of days <a
+                                        class="link-offset-2 link-underline link-underline-opacity-0 text-danger fw-bold"
+                                        href="#" data-bs-toggle="tooltip"
+                                        data-bs-title="To add a half-day leave, enter 0.5 in the Num of days ."><i
+                                            class="bi bi-question-circle"></i></a></label>
+                                <span class="error col-auto text-right text-danger" id="num_of_daysError"></span>
+                            </div>
+                            <input type="text" class="form-control border border-black " id="num_of_days"
+                                name="num_of_days">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <label for="address_when_on_leave" class="form-label col-auto">Address when on
+                                    leave</label>
+                                <span class="error col-auto text-right text-danger"
+                                    id="address_when_on_leaveError"></span>
+                            </div>
+                            <input type="text" class="form-control border border-black " id="address_when_on_leave"
+                                name="address_when_on_leave" value="">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="mb-3">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <label for="supervisor_id" id="supervisor_idlbl"
+                                    class="form-label col-auto">Supervisor</label>
+                                <span class="error col-auto text-right text-danger" id="supervisor_idError"></span>
+                            </div>
+                            <select class="form-select border border-black" aria-label="Default select example"
+                                name="supervisor_id" id="supervisor_id">
+                                <option value="" disabled selected>Search or select...</option>
+                                <option value="1001">Mr. Ashen Perera</option>
+                                <option value="1002">Ms. Nadeesha Fernando</option>
+                                <option value="1003">Mr. Sanjeewa Silva</option>
+                                <option value="1004">Mrs. Harshani Dissanayake</option>
+                                <option value="1005">Mr. Chaminda Rathnayake</option>
+                                <option value="1006">Ms. Dilani Herath</option>
+                                <option value="1007">Mr. Dinesh Weerasinghe</option>
+                                <option value="1008">Ms. Kalpani Jayasuriya</option>
+                                <option value="1009">Mr. Ruwan Fernando</option>
+                                <option value="1010">Mrs. Ishara Abeysekera</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <label for="reason_for_leave" class="form-label col-auto">Reason for leave</label>
+                                <span class="error col-auto text-right text-danger" id="reason_for_leaveError"></span>
+                            </div>
+                            <textarea type="text" class="form-control border border-black " id="reason_for_leave"
+                                name="reason_for_leave">Personal</textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+
+                    <button type="submit" id="submit_button" class="btn submitbtn mb-2">SUBMIT</button>
+                </div>
+            </form>
+
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <!--js =========================================================== -->
+    <!-- jQuery (CDN + Local fallback) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-3fabf02c8a6e0e9cb7a4ff69bd92d5bdba9b6efb86d8ff3509d1a96e0e9b7b29"
+        crossorigin="anonymous"></script>
+    <script src="bootstrap/jquery-3.7.1.min.js"></script>
+
+    <!-- Bootstrap Bundle JS (CDN + Local fallback) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1HIaZDU6AItkWMZRm9OO9vYl0A1U+FxOtCAfQ6AUyEz"
+        crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DataTables JS (CDN + Local fallback) -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="DataTables/datatables.min.js"></script>
+
+    <script src="assets/co.js"></script>
+
+    <!--js =========================================================== -->
+    <script src="assets/validtion.js"></script>
+    <!-- Initialize DataTables -->
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new TomSelect("#supervisor_id", {
+                placeholder: "Search or select...",
+                allowEmptyOption: true,
+            });
+        });
+    </script>
+
+    <script>
+        // Function to validate the leave type selection
+        function validateLeaveType() {
+            // Limits for each leave type
+
+            const leaveLimits = {
+                "Annual": 14,
+                "Casual": 7,
+                "Sick": 21
+            };
+
+            // Counts fetched from PHP
+            const leaveCounts = {
+                "Annual": 4,
+                "Casual": 5,
+                "Sick": 6
+            };
+
+            // Get the selected leave type
+            const leaveType = document.getElementById("Leave_type").value;
+
+            // Get the error span and submit button
+            const errorSpan = document.getElementById("Leave_typeError");
+            const submitButton = document.getElementById("submit_button");
+
+            // Ensure that a leave type is selected
+            if (!leaveType) {
+                errorSpan.textContent = "Please select a leave type.";
+                submitButton.disabled = true; // Disable the submit button
+                return;
+            }
+
+            // Check if the selected leave type exceeds the limit
+            if (leaveCounts[leaveType] >= leaveLimits[leaveType]) {
+                errorSpan.textContent = `Leave limit of ${leaveLimits[leaveType]} days.`;
+                submitButton.disabled = true; // Disable the submit button
+            } else {
+                errorSpan.textContent = ""; // Clear the error
+                submitButton.disabled = false; // Enable the submit button
+            }
+        }
+
+        // Prevent form submission if validation fails
+        document.getElementById("leave_form").addEventListener("submit", function (event) {
+            const errorSpan = document.getElementById("Leave_typeError").textContent;
+            if (errorSpan) {
+                event.preventDefault(); // Stop form submission
+                //   alert("Please fix the errors before submitting the form.");
+            }
+        });
+
+        // Attach the validation function to the leave type select change event
+        document.getElementById("Leave_type").addEventListener("change", validateLeaveType);
+    </script>
+    <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
+    <script>
+        const leaveTypeSelect = document.getElementById('Leave_type');
+        const supervisorLabel = document.getElementById('supervisor_idlbl');
+
+        leaveTypeSelect.addEventListener('change', () => {
+            if (leaveTypeSelect.value === 'Annual') {
+                supervisorLabel.textContent = "Representaive";
+            } else {
+                supervisorLabel.textContent = "Supervisor";
+            }
+        });
+    </script>
+</body>
+
+</html>
